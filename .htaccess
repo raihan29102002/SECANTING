@@ -1,0 +1,38 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    
+    RewriteRule ^(.*)$ $1.php
+    
+
+    RewriteRule ^/?$ /pengajuan_sertifikat.php [L,NC]
+    RewriteRule ^admin/login/?$ /login_admin.php [L,NC]
+    RewriteRule ^/?login/?$ /error-404.php [L,NC]
+    #RewriteRule ^admin/login/(.+)$ /login.php$1 [L,NC]
+
+    # Menangani halaman error 404
+    ErrorDocument 404 /error-404.php
+    
+    # Redirect jika terdapat spasi di dalam URL
+    RewriteCond %{REQUEST_URI} ^(.*)\s(.*)$
+    RewriteRule ^ %1-%2 [R=301,L,NE]
+
+    # # Jika file atau direktori fisik tidak ditemukan
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?/$1 [L] 
+    RewriteCond %{REQUEST_URI} ^(.*)\s(.*)$
+    RewriteRule ^ %1-%2 [R=301,L,NE]
+
+    # Jika file atau direktori fisik tidak ditemukan
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?/$1 [L] 
+</IfModule>
+
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit
+

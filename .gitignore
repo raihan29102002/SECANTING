@@ -1,6 +1,6 @@
 .DS_Store
-/vendor
-composer.lock
-/phpqrcode
-/spreadsheet-reader-master
+vendor/
+*.composer.lock
+phpqrcode/
+spreadsheet-reader-master/
 
